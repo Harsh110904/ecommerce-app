@@ -1,12 +1,15 @@
-import { nanoid } from "@reduxjs/toolkit";
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
+import { asyncloginuser } from "../actions/userActions"
+import { useDispatch } from "react-redux"
 
 const Login = () => {
-    const { register, reset, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm();
+    const dispatch = useDispatch()
+    
     const LoginHandler = (user) => {
-        user.id = nanoid()
-        console.log(user)
+        console.log("Attempting login:", user)
+        dispatch(asyncloginuser(user))
     }
     return (
         <div className='min-h-[80vh] flex items-center justify-center'>

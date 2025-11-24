@@ -8,12 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { store } from "./store/store.jsx"
 import { Provider } from 'react-redux'
 
-// Unregister service worker if it exists
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(registrations => {
-    registrations.forEach(registration => registration.unregister())
-  })
-}
+
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
