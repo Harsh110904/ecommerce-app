@@ -1,15 +1,18 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { asyncloginuser } from "../actions/userActions"
 import { useDispatch } from "react-redux"
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
     const dispatch = useDispatch()
-    
-    const LoginHandler = (user) => {
+    const navigate = useNavigate()
+
+    const LoginHandler = async (user) => {
         console.log("Attempting login:", user)
         dispatch(asyncloginuser(user))
+        // Redirect to home after login
+        navigate("/products")
     }
     return (
         <div className='min-h-[80vh] flex items-center justify-center'>
